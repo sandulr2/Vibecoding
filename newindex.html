@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Student Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Modern Color Palette */
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --text-dark: #111827;
+            --text-light: #4b5563;
+            --card-bg: #ffffff;
+            
+            /* The "Soft" Background Gradient */
+            --bg-gradient: linear-gradient(135deg, #f5f7ff 0%, #ede9fe 50%, #f3f4f6 100%);
+            
+            /* Multi-layered Shadow for depth */
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: var(--text-dark);
+        }
+
+        /* The Card Container */
+        .profile-card {
+            background: var(--card-bg);
+            width: 100%;
+            max-width: 400px;
+            border-radius: 24px; /* Smooth rounded corners */
+            padding: 48px 32px;
+            text-align: center;
+            box-shadow: var(--shadow-lg); /* Floating effect */
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .profile-card:hover {
+            cursor: pointer;
+            transform: translateY(-8px);
+            box-shadow: 0 30px 40px -10px rgb(0 0 0 / 0.15);
+        }
+
+        /* Profile Image Styling */
+        .img-wrapper {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 24px;
+        }
+
+        .img-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            background: linear-gradient(to right, #6366f1, #a855f7);
+            z-index: 0;
+        }
+
+        .profile-img {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%; /* Rounded profile */
+            border: 4px solid #fff;
+            z-index: 1;
+        }
+
+        /* Text Styling */
+        .name {
+            font-size: 1.75rem;
+            font-weight: 700; /* Bold for hierarchy */
+            color: var(--text-dark);
+            margin-bottom: 6px;
+            letter-spacing: -0.025em;
+        }
+
+        .stream {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em; /* Refined spacing */
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .bio {
+            font-size: 1rem;
+            font-weight: 400; /* Regular for body text */
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+
+        /* Social Icons Section */
+        .social-group {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .social-btn {
+            text-decoration: none;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px; /* Smooth square-ish rounded corners */
+            font-size: 1.25rem;
+            background: #f9fafb;
+            color: var(--text-light);
+            transition: all 0.3s ease;
+            border: 1px solid #f3f4f6;
+        }
+
+        .social-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary);
+        }
+
+        /* Specific Hover colors for brand accuracy */
+        .social-btn.github:hover { background: #181717; border-color: #181717; }
+        .social-btn.linkedin:hover { background: #0077b5; border-color: #0077b5; }
+        .social-btn.email:hover { background: #ea4335; border-color: #ea4335; }
+
+        /* Responsive Logic */
+        @media (max-width: 400px) {
+            .profile-card {
+                padding: 40px 24px;
+                border-radius: 20px;
+            }
+            .name { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="profile-card">
+        <div class="img-wrapper">
+            <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg" alt="Student Portrait" class="profile-img">
+        </div>
+
+        <h1 class="name">Jordan Smith</h1>
+        <span class="stream">Information Systems</span>
+
+        <p class="bio">
+            Aspiring Data Architect with a focus on scalable cloud solutions. Enthusiast of clean code, minimalist design, and building tools that solve real-world problems.
+        </p>
+
+        <nav class="social-group">
+            <a href="#" class="social-btn github" title="GitHub">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="#" class="social-btn linkedin" title="LinkedIn">
+                <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a href="mailto:jordan@example.com" class="social-btn email" title="Email">
+                <i class="fa-solid fa-envelope"></i>
+            </a>
+        </nav>
+    </main>
+
+</body>
+</html>
